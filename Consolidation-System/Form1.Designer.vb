@@ -22,7 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.dgList = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dtDate = New System.Windows.Forms.DateTimePicker()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -51,17 +51,21 @@ Partial Class Form1
         Me.btnEdit = New System.Windows.Forms.Button()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.txtSearch = New System.Windows.Forms.TextBox()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.txtRealProductAmount = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.lblPlusPercent5 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        CType(Me.dgList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'DataGridView1
+        'dgList
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 177)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(910, 225)
-        Me.DataGridView1.TabIndex = 0
+        Me.dgList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgList.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.dgList.Location = New System.Drawing.Point(0, 275)
+        Me.dgList.Name = "dgList"
+        Me.dgList.Size = New System.Drawing.Size(913, 225)
+        Me.dgList.TabIndex = 0
         '
         'Label1
         '
@@ -102,7 +106,7 @@ Partial Class Form1
         Me.txtItems.Location = New System.Drawing.Point(99, 87)
         Me.txtItems.Multiline = True
         Me.txtItems.Name = "txtItems"
-        Me.txtItems.Size = New System.Drawing.Size(100, 20)
+        Me.txtItems.Size = New System.Drawing.Size(100, 39)
         Me.txtItems.TabIndex = 6
         '
         'Label3
@@ -282,7 +286,7 @@ Partial Class Form1
         '
         'btnAdd
         '
-        Me.btnAdd.Location = New System.Drawing.Point(708, 148)
+        Me.btnAdd.Location = New System.Drawing.Point(711, 246)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(93, 23)
         Me.btnAdd.TabIndex = 28
@@ -291,7 +295,7 @@ Partial Class Form1
         '
         'btnEdit
         '
-        Me.btnEdit.Location = New System.Drawing.Point(805, 148)
+        Me.btnEdit.Location = New System.Drawing.Point(808, 246)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(93, 23)
         Me.btnEdit.TabIndex = 29
@@ -300,7 +304,7 @@ Partial Class Form1
         '
         'btnSearch
         '
-        Me.btnSearch.Location = New System.Drawing.Point(157, 149)
+        Me.btnSearch.Location = New System.Drawing.Point(160, 247)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(93, 23)
         Me.btnSearch.TabIndex = 30
@@ -309,18 +313,60 @@ Partial Class Form1
         '
         'txtSearch
         '
-        Me.txtSearch.Location = New System.Drawing.Point(16, 151)
+        Me.txtSearch.Location = New System.Drawing.Point(19, 249)
         Me.txtSearch.Multiline = True
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.Size = New System.Drawing.Size(135, 20)
         Me.txtSearch.TabIndex = 31
         '
+        'txtRealProductAmount
+        '
+        Me.txtRealProductAmount.Location = New System.Drawing.Point(795, 151)
+        Me.txtRealProductAmount.Name = "txtRealProductAmount"
+        Me.txtRealProductAmount.Size = New System.Drawing.Size(100, 20)
+        Me.txtRealProductAmount.TabIndex = 32
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(658, 158)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(131, 13)
+        Me.Label13.TabIndex = 33
+        Me.Label13.Text = "Real Product Amount:"
+        '
+        'lblPlusPercent5
+        '
+        Me.lblPlusPercent5.BackColor = System.Drawing.Color.White
+        Me.lblPlusPercent5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblPlusPercent5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPlusPercent5.Location = New System.Drawing.Point(795, 184)
+        Me.lblPlusPercent5.Name = "lblPlusPercent5"
+        Me.lblPlusPercent5.Size = New System.Drawing.Size(100, 20)
+        Me.lblPlusPercent5.TabIndex = 34
+        Me.lblPlusPercent5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(695, 187)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(94, 13)
+        Me.Label15.TabIndex = 35
+        Me.Label15.Text = "Plus 5 Percent:"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(910, 402)
+        Me.ClientSize = New System.Drawing.Size(913, 500)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Label15)
+        Me.Controls.Add(Me.lblPlusPercent5)
+        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.txtRealProductAmount)
         Me.Controls.Add(Me.txtSearch)
         Me.Controls.Add(Me.btnSearch)
         Me.Controls.Add(Me.btnEdit)
@@ -349,17 +395,17 @@ Partial Class Form1
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.dtDate)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.dgList)
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Consolidated Form"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dgList As DataGridView
     Friend WithEvents Label1 As Label
     Friend WithEvents dtDate As DateTimePicker
     Friend WithEvents Label2 As Label
@@ -388,4 +434,8 @@ Partial Class Form1
     Friend WithEvents btnEdit As Button
     Friend WithEvents btnSearch As Button
     Friend WithEvents txtSearch As TextBox
+    Friend WithEvents txtRealProductAmount As TextBox
+    Friend WithEvents Label13 As Label
+    Friend WithEvents lblPlusPercent5 As Label
+    Friend WithEvents Label15 As Label
 End Class
