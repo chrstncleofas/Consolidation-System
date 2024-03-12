@@ -20,7 +20,7 @@ Public Class Form3
         Try
             conn.Open()
             cmd.ExecuteNonQuery()
-            MessageBox.Show("User registered successfully.")
+            MessageBox.Show("Register account successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Form1.Show()
             Me.Hide()
         Catch ex As Exception

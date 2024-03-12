@@ -15,11 +15,11 @@ Public Class Form1
             conn.Open()
             Dim result As Integer = Convert.ToInt32(cmd.ExecuteScalar())
             If result > 0 Then
-                MessageBox.Show("Login successful.")
+                MessageBox.Show("Login Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Form2.Show()
                 Me.Hide()
             Else
-                MessageBox.Show("Invalid username or password.")
+                MessageBox.Show("Invalid username or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         Catch ex As Exception
             MessageBox.Show("Error logging in: " & ex.Message)
