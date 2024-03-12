@@ -152,4 +152,10 @@ Public Class Form2
             GC.Collect()
         End Try
     End Sub
+    Private Sub LogoutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
+        If MessageBox.Show("Are you sure do want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = vbYes Then
+            Me.Close()
+            Form1.Show()
+        End If
+    End Sub
 End Class

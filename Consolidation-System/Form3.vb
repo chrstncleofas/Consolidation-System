@@ -16,13 +16,16 @@ Public Class Form3
         cmd.Parameters.AddWithValue("@position", position)
         cmd.Parameters.AddWithValue("@username", username)
         cmd.Parameters.AddWithValue("@password", password)
-
         Try
-            conn.Open()
-            cmd.ExecuteNonQuery()
-            MessageBox.Show("Register account successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Form1.Show()
-            Me.Hide()
+            If txtFName.Text = "" And txtLName.Text = "" And cmbPosition.Text = "" And txtUsername.Text = "" And txtPassword.Text = "" Then
+                MessageBox.Show("Please fillup the all fields", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                conn.Open()
+                cmd.ExecuteNonQuery()
+                MessageBox.Show("Register account successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Form1.Show()
+                Me.Hide()
+            End If
         Catch ex As Exception
             MessageBox.Show("Error registering user: " & ex.Message)
         Finally

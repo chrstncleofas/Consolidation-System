@@ -18,6 +18,8 @@ Public Class Form1
                 MessageBox.Show("Login Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Form2.Show()
                 Me.Hide()
+            ElseIf txtUsername.Text = "" And txtPassword.Text = "" Then
+                MessageBox.Show("Please fillup the username and password", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Else
                 MessageBox.Show("Invalid username or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
