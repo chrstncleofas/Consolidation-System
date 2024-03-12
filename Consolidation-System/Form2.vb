@@ -6,13 +6,32 @@ Public Class Form2
     Dim adapter As New NpgsqlDataAdapter
     Dim dt As New DataTable
     Private Sub refreshData()
-        dt.Clear()
-        con.Open()
-        Dim query As String = "SELECT * FROM public.database ORDER BY id ASC"
-        adapter = New NpgsqlDataAdapter(query, con)
-        adapter.Fill(dt)
-        dgList.DataSource = dt
-        con.Close()
+        Try
+            dt.Clear()
+            con.Open()
+            Dim query As String = "SELECT * FROM public.db ORDER BY id ASC"
+            adapter = New NpgsqlDataAdapter(query, con)
+            adapter.Fill(dt)
+            dgList.DataSource = dt
+        Catch ex As Exception
+            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            con.Close()
+        End Try
+    End Sub
+    Private Sub ClearAll()
+        txtOrderDetails.Text = ""
+        txtItems.Text = ""
+        txtCustomerName.Text = ""
+        txtDestination.Text = ""
+        txtTotalOrders.Text = ""
+        lblPercent.Text = ""
+        lblConviFee.Text = ""
+        lblConviFee.Text = ""
+        txtCFSUF.Text = ""
+        lblTotalSales.Text = ""
+        txtDCharges.Text = ""
+        txtMerchants.Text = ""
     End Sub
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dtDate.CustomFormat = "MM/dd/yyyy"
@@ -30,26 +49,33 @@ Public Class Form2
         lblPlusPercent5.Text = Val(txtRealProductAmount.Text) / 100 * 5 + Val(txtRealProductAmount.Text)
     End Sub
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        con.Open()
-        Dim query As String = "INSERT INTO database (date, orderdetails, items, customername, destination, totalorders, percentage, convifee, cfsuf, totalsales, deliverycharges, merchants) VALUES (@val1, @val2, @val3, @val4, @val5, @val6, @val7, @val8, @val9, @val10, @val11, @val12)"
-        command = New NpgsqlCommand(query, con)
-        command.Parameters.AddWithValue("@val1", dtDate.Text)
-        command.Parameters.AddWithValue("@val2", txtOrderDetails.Text)
-        command.Parameters.AddWithValue("@val3", txtItems.Text)
-        command.Parameters.AddWithValue("@val4", txtCustomerName.Text)
-        command.Parameters.AddWithValue("@val5", txtDestination.Text)
-        command.Parameters.AddWithValue("@val6", txtTotalOrders.Text)
-        command.Parameters.AddWithValue("@val7", lblPercent.Text)
-        command.Parameters.AddWithValue("@val8", lblConviFee.Text)
-        command.Parameters.AddWithValue("@val9", txtCFSUF.Text)
-        command.Parameters.AddWithValue("@val10", lblTotalSales.Text)
-        command.Parameters.AddWithValue("@val11", txtDCharges.Text)
-        command.Parameters.AddWithValue("@val12", txtMerchants.Text)
-        command.ExecuteNonQuery()
-        con.Close()
-        MessageBox.Show("Adding data successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        refreshData()
+        Try
+            con.Open()
+            Dim query As String = "INSERT INTO db (date, orderdetails, items, customername, destination, totalorders, percentage, convifee, cfsuf, totalsales, deliverycharges, merchants) VALUES (@val1, @val2, @val3, @val4, @val5, @val6, @val7, @val8, @val9, @val10, @val11, @val12)"
+            command = New NpgsqlCommand(query, con)
+            command.Parameters.AddWithValue("@val1", dtDate.Value.Date)
+            command.Parameters.AddWithValue("@val2", txtOrderDetails.Text)
+            command.Parameters.AddWithValue("@val3", txtItems.Text)
+            command.Parameters.AddWithValue("@val4", txtCustomerName.Text)
+            command.Parameters.AddWithValue("@val5", txtDestination.Text)
+            command.Parameters.AddWithValue("@val6", Val(txtTotalOrders.Text))
+            command.Parameters.AddWithValue("@val7", lblPercent.Text)
+            command.Parameters.AddWithValue("@val8", lblConviFee.Text)
+            command.Parameters.AddWithValue("@val9", txtCFSUF.Text)
+            command.Parameters.AddWithValue("@val10", lblTotalSales.Text)
+            command.Parameters.AddWithValue("@val11", txtDCharges.Text)
+            command.Parameters.AddWithValue("@val12", txtMerchants.Text)
+            command.ExecuteNonQuery()
+            MessageBox.Show("Adding data successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            con.Close()
+            refreshData()
+            ClearAll()
+        End Try
     End Sub
+
     Private Sub dgList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgList.CellContentClick
         If e.RowIndex >= 0 Then
             Dim row As DataGridViewRow
@@ -70,41 +96,37 @@ Public Class Form2
         End If
     End Sub
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
-        txtOrderDetails.Text = ""
-        txtItems.Text = ""
-        txtCustomerName.Text = ""
-        txtDestination.Text = ""
-        txtTotalOrders.Text = ""
-        lblPercent.Text = ""
-        lblConviFee.Text = ""
-        lblConviFee.Text = ""
-        txtCFSUF.Text = ""
-        lblTotalSales.Text = ""
-        txtDCharges.Text = ""
-        txtMerchants.Text = ""
+        ClearAll()
     End Sub
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
-        con.Open()
-        Dim query As String = "UPDATE database SET date=@val1, orderdetails=@val2, items=@val3, customername=@val4, destination=@val5, totalorders=@val6, percentage=@val7, convifee=@val8, cfsuf=@val9, totalsales=@val10, deliverycharges=@val11, merchants=@val12 WHERE ID=@id"
-        command = New NpgsqlCommand(query, con)
-        command.Parameters.AddWithValue("@val1", dtDate.Text)
-        command.Parameters.AddWithValue("@val2", txtOrderDetails.Text)
-        command.Parameters.AddWithValue("@val3", txtItems.Text)
-        command.Parameters.AddWithValue("@val4", txtCustomerName.Text)
-        command.Parameters.AddWithValue("@val5", txtDestination.Text)
-        command.Parameters.AddWithValue("@val6", txtTotalOrders.Text)
-        command.Parameters.AddWithValue("@val7", lblPercent.Text)
-        command.Parameters.AddWithValue("@val8", lblConviFee.Text)
-        command.Parameters.AddWithValue("@val9", txtCFSUF.Text)
-        command.Parameters.AddWithValue("@val10", lblTotalSales.Text)
-        command.Parameters.AddWithValue("@val11", txtDCharges.Text)
-        command.Parameters.AddWithValue("@val12", txtMerchants.Text)
-        command.Parameters.AddWithValue("@id", dgList.CurrentRow.Cells(0).Value)
-        command.ExecuteNonQuery()
-        MessageBox.Show("Edit data successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        con.Close()
-        refreshData()
+        Try
+            con.Open()
+            Dim query As String = "UPDATE db SET date=@val1, orderdetails=@val2, items=@val3, customername=@val4, destination=@val5, totalorders=@val6, percentage=@val7, convifee=@val8, cfsuf=@val9, totalsales=@val10, deliverycharges=@val11, merchants=@val12 WHERE ID=@id"
+            command = New NpgsqlCommand(query, con)
+            command.Parameters.AddWithValue("@val1", dtDate.Value.Date)
+            command.Parameters.AddWithValue("@val2", txtOrderDetails.Text)
+            command.Parameters.AddWithValue("@val3", txtItems.Text)
+            command.Parameters.AddWithValue("@val4", txtCustomerName.Text)
+            command.Parameters.AddWithValue("@val5", txtDestination.Text)
+            command.Parameters.AddWithValue("@val6", txtTotalOrders.Text)
+            command.Parameters.AddWithValue("@val7", lblPercent.Text)
+            command.Parameters.AddWithValue("@val8", lblConviFee.Text)
+            command.Parameters.AddWithValue("@val9", txtCFSUF.Text)
+            command.Parameters.AddWithValue("@val10", lblTotalSales.Text)
+            command.Parameters.AddWithValue("@val11", txtDCharges.Text)
+            command.Parameters.AddWithValue("@val12", txtMerchants.Text)
+            command.Parameters.AddWithValue("@id", dgList.CurrentRow.Cells(0).Value)
+            command.ExecuteNonQuery()
+            MessageBox.Show("Edit data successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            con.Close()
+            refreshData()
+            ClearAll()
+        End Try
     End Sub
+
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
         ExportToExcel()
     End Sub
@@ -157,5 +179,22 @@ Public Class Form2
             Me.Close()
             Form1.Show()
         End If
+    End Sub
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Try
+            Dim query As String = "SELECT * FROM db WHERE CAST(""date"" AS timestamp) BETWEEN @startDate AND @endDate ORDER BY ""date"" DESC"
+            Dim adapter As New NpgsqlDataAdapter(query, con)
+            adapter.SelectCommand.Parameters.AddWithValue("@startDate", DateTimePickerStartDate.Value.Date) ' Hindi na kailangan ang .Date
+            adapter.SelectCommand.Parameters.AddWithValue("@endDate", DateTimePickerEndDate.Value.Date) ' Hindi na kailangan ang .Date
+
+            Dim dbds As New DataSet()
+            adapter.Fill(dbds, "db")
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            If con.State = ConnectionState.Open Then
+                con.Close()
+            End If
+        End Try
     End Sub
 End Class

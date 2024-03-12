@@ -32,4 +32,10 @@ Public Class Form3
             conn.Close()
         End Try
     End Sub
+    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        If MessageBox.Show("Are you sure do want to cancel?", "Cancel", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = vbYes Then
+            Me.Close()
+            Form1.Show()
+        End If
+    End Sub
 End Class

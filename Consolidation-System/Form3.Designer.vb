@@ -33,6 +33,7 @@ Partial Class Form3
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btnRegister = New System.Windows.Forms.Button()
         Me.cmbPosition = New System.Windows.Forms.ComboBox()
+        Me.btnCancel = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -120,11 +121,11 @@ Partial Class Form3
         'btnRegister
         '
         Me.btnRegister.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRegister.Location = New System.Drawing.Point(61, 193)
+        Me.btnRegister.Location = New System.Drawing.Point(34, 198)
         Me.btnRegister.Name = "btnRegister"
-        Me.btnRegister.Size = New System.Drawing.Size(135, 44)
+        Me.btnRegister.Size = New System.Drawing.Size(95, 30)
         Me.btnRegister.TabIndex = 10
-        Me.btnRegister.Text = "Register Now"
+        Me.btnRegister.Text = "Register"
         Me.btnRegister.UseVisualStyleBackColor = True
         '
         'cmbPosition
@@ -137,12 +138,23 @@ Partial Class Form3
         Me.cmbPosition.Size = New System.Drawing.Size(129, 26)
         Me.cmbPosition.TabIndex = 11
         '
+        'btnCancel
+        '
+        Me.btnCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCancel.Location = New System.Drawing.Point(135, 198)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(95, 30)
+        Me.btnCancel.TabIndex = 12
+        Me.btnCancel.Text = "Cancel"
+        Me.btnCancel.UseVisualStyleBackColor = True
+        '
         'Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(266, 258)
         Me.ControlBox = False
+        Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.cmbPosition)
         Me.Controls.Add(Me.btnRegister)
         Me.Controls.Add(Me.txtPassword)
@@ -173,4 +185,5 @@ Partial Class Form3
     Friend WithEvents Label5 As Label
     Friend WithEvents btnRegister As Button
     Friend WithEvents cmbPosition As ComboBox
+    Friend WithEvents btnCancel As Button
 End Class

@@ -18,6 +18,8 @@ Public Class Form1
                 MessageBox.Show("Login Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Form2.Show()
                 Me.Hide()
+                txtUsername.Text = ""
+                txtPassword.Text = ""
             ElseIf txtUsername.Text = "" And txtPassword.Text = "" Then
                 MessageBox.Show("Please fillup the username and password", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Else
@@ -32,5 +34,10 @@ Public Class Form1
     Private Sub btnRegister_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles btnRegister.LinkClicked
         Form3.Show()
         Me.Hide()
+    End Sub
+    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        If MessageBox.Show("Are you sure do want to cancel?", "Cancel", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = vbYes Then
+            Me.Close()
+        End If
     End Sub
 End Class
