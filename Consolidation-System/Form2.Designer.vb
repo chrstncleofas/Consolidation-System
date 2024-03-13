@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form2
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Form2
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.dgList = New System.Windows.Forms.DataGridView()
         Me.btnPrint = New System.Windows.Forms.Button()
@@ -60,7 +60,8 @@ Partial Class Form2
         Me.LogoutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DateTimePickerStartDate = New System.Windows.Forms.DateTimePicker()
         Me.DateTimePickerEndDate = New System.Windows.Forms.DateTimePicker()
-        Me.btnFilter = New System.Windows.Forms.Button()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
         CType(Me.dgList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -392,26 +393,37 @@ Partial Class Form2
         '
         'DateTimePickerStartDate
         '
-        Me.DateTimePickerStartDate.Location = New System.Drawing.Point(12, 226)
+        Me.DateTimePickerStartDate.Location = New System.Drawing.Point(85, 257)
         Me.DateTimePickerStartDate.Name = "DateTimePickerStartDate"
-        Me.DateTimePickerStartDate.Size = New System.Drawing.Size(136, 20)
+        Me.DateTimePickerStartDate.Size = New System.Drawing.Size(106, 20)
         Me.DateTimePickerStartDate.TabIndex = 73
         '
         'DateTimePickerEndDate
         '
-        Me.DateTimePickerEndDate.Location = New System.Drawing.Point(12, 252)
+        Me.DateTimePickerEndDate.Location = New System.Drawing.Point(263, 257)
         Me.DateTimePickerEndDate.Name = "DateTimePickerEndDate"
-        Me.DateTimePickerEndDate.Size = New System.Drawing.Size(136, 20)
+        Me.DateTimePickerEndDate.Size = New System.Drawing.Size(106, 20)
         Me.DateTimePickerEndDate.TabIndex = 74
         '
-        'btnFilter
+        'Label14
         '
-        Me.btnFilter.Location = New System.Drawing.Point(154, 237)
-        Me.btnFilter.Name = "btnFilter"
-        Me.btnFilter.Size = New System.Drawing.Size(75, 23)
-        Me.btnFilter.TabIndex = 75
-        Me.btnFilter.Text = "Filter"
-        Me.btnFilter.UseVisualStyleBackColor = True
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(14, 260)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(69, 13)
+        Me.Label14.TabIndex = 75
+        Me.Label14.Text = "Start Date:"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(198, 260)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(64, 13)
+        Me.Label16.TabIndex = 76
+        Me.Label16.Text = "End Date:"
         '
         'Form2
         '
@@ -419,7 +431,8 @@ Partial Class Form2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(913, 500)
         Me.ControlBox = False
-        Me.Controls.Add(Me.btnFilter)
+        Me.Controls.Add(Me.Label16)
+        Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.DateTimePickerEndDate)
         Me.Controls.Add(Me.DateTimePickerStartDate)
         Me.Controls.Add(Me.btnPrint)
@@ -459,7 +472,7 @@ Partial Class Form2
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Form2"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Form2"
+        Me.Text = "Consolidation Form"
         CType(Me.dgList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
@@ -506,5 +519,6 @@ Partial Class Form2
     Friend WithEvents LogoutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DateTimePickerStartDate As DateTimePicker
     Friend WithEvents DateTimePickerEndDate As DateTimePicker
-    Friend WithEvents btnFilter As Button
+    Friend WithEvents Label14 As Label
+    Friend WithEvents Label16 As Label
 End Class

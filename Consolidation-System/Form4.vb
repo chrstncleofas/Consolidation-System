@@ -1,14 +1,12 @@
 ﻿Imports Npgsql
-Public Class Form1
+Public Class Form4
     Dim connString As String = "Host=localhost;Port=5432;Username=postgres;Password=password;Database=ConsolidationdDb;"
     Dim conn As NpgsqlConnection = New NpgsqlConnection(connString)
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         Dim username As String = txtUsername.Text
         Dim password As String = txtPassword.Text
-
         Dim query As String = "SELECT COUNT(*) FROM users WHERE Username=@username AND Password=@password"
         Dim cmd As NpgsqlCommand = New NpgsqlCommand(query, conn)
-
         cmd.Parameters.AddWithValue("@username", username)
         cmd.Parameters.AddWithValue("@password", password)
         Try
@@ -16,8 +14,9 @@ Public Class Form1
             Dim result As Integer = Convert.ToInt32(cmd.ExecuteScalar())
             If result > 0 Then
                 MessageBox.Show("Login Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Form2.Show()
+                Form3.Show()
                 Me.Hide()
+                Form1.Hide()
                 txtUsername.Text = ""
                 txtPassword.Text = ""
             ElseIf txtUsername.Text = "" And txtPassword.Text = "" Then
@@ -30,14 +29,6 @@ Public Class Form1
         Finally
             conn.Close()
         End Try
-    End Sub
-    Private Sub btnRegister_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles btnRegister.LinkClicked
-        Form4.Show()
-    End Sub
-    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-        If MessageBox.Show("Are you sure do want to cancel?", "Cancel", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = vbYes Then
-            Me.Close()
-        End If
     End Sub
     Private Sub chkShow_CheckedChanged(sender As Object, e As EventArgs) Handles chkShow.CheckedChanged
         If chkShow.Checked = False Then

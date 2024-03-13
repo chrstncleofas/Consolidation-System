@@ -32,6 +32,32 @@ Public Class Form2
         txtDCharges.Text = ""
         txtMerchants.Text = ""
     End Sub
+    Private Sub FilterDate()
+        Dim startDate As Date = DateTimePickerStartDate.Value.Date
+        Dim endDate As Date = DateTimePickerEndDate.Value.Date
+        Try
+            dt.Clear()
+            con.Open()
+            Dim query As String = "SELECT * FROM db WHERE date BETWEEN @startDate AND @endDate ORDER BY id ASC"
+            adapter = New NpgsqlDataAdapter(query, con)
+            adapter.SelectCommand.Parameters.AddWithValue("@startDate", startDate)
+            adapter.SelectCommand.Parameters.AddWithValue("@endDate", endDate)
+            adapter.Fill(dt)
+            dgList.DataSource = dt
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            If con.State = ConnectionState.Open Then
+                con.Close()
+            End If
+        End Try
+    End Sub
+    Private Sub DateTimePickerStartDate_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePickerStartDate.ValueChanged
+        FilterDate()
+    End Sub
+    Private Sub DateTimePickerEndDate_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePickerEndDate.ValueChanged
+        FilterDate()
+    End Sub
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dtDate.CustomFormat = "yyyy-MM-dd"
         dtDate.Format = DateTimePickerFormat.Custom
@@ -85,7 +111,6 @@ Public Class Form2
             ClearAll()
         End Try
     End Sub
-
     Private Sub dgList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgList.CellContentClick
         If e.RowIndex >= 0 Then
             Dim row As DataGridViewRow
@@ -136,7 +161,6 @@ Public Class Form2
             ClearAll()
         End Try
     End Sub
-
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
         ExportToExcel()
     End Sub
@@ -189,25 +213,5 @@ Public Class Form2
             Me.Close()
             Form1.Show()
         End If
-    End Sub
-    Private Sub btnFilter_Click(sender As Object, e As EventArgs) Handles btnFilter.Click
-        Dim startDate As Date = DateTimePickerStartDate.Value.Date
-        Dim endDate As Date = DateTimePickerEndDate.Value.Date
-        Try
-            dt.Clear()
-            con.Open()
-            Dim query As String = "SELECT * FROM db WHERE date BETWEEN @startDate AND @endDate ORDER BY id ASC"
-            adapter = New NpgsqlDataAdapter(query, con)
-            adapter.SelectCommand.Parameters.AddWithValue("@startDate", startDate)
-            adapter.SelectCommand.Parameters.AddWithValue("@endDate", endDate)
-            adapter.Fill(dt)
-            dgList.DataSource = dt
-        Catch ex As Exception
-            MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            If con.State = ConnectionState.Open Then
-                con.Close()
-            End If
-        End Try
     End Sub
 End Class

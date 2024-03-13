@@ -37,17 +37,17 @@ Partial Class Form1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(135, 20)
+        Me.Label1.Location = New System.Drawing.Point(92, 18)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(81, 25)
+        Me.Label1.Size = New System.Drawing.Size(210, 50)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "LOGIN"
+        Me.Label1.Text = "IBAYTECH CORP. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "        LOGIN"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(22, 100)
+        Me.Label2.Location = New System.Drawing.Point(22, 111)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(114, 20)
         Me.Label2.TabIndex = 1
@@ -56,7 +56,7 @@ Partial Class Form1
         'txtUsername
         '
         Me.txtUsername.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtUsername.Location = New System.Drawing.Point(142, 94)
+        Me.txtUsername.Location = New System.Drawing.Point(142, 105)
         Me.txtUsername.Name = "txtUsername"
         Me.txtUsername.Size = New System.Drawing.Size(204, 29)
         Me.txtUsername.TabIndex = 2
@@ -64,7 +64,7 @@ Partial Class Form1
         'txtPassword
         '
         Me.txtPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPassword.Location = New System.Drawing.Point(142, 129)
+        Me.txtPassword.Location = New System.Drawing.Point(142, 140)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
         Me.txtPassword.Size = New System.Drawing.Size(204, 29)
@@ -74,7 +74,7 @@ Partial Class Form1
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(22, 135)
+        Me.Label3.Location = New System.Drawing.Point(22, 146)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(116, 20)
         Me.Label3.TabIndex = 3
@@ -83,7 +83,7 @@ Partial Class Form1
         'btnLogin
         '
         Me.btnLogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLogin.Location = New System.Drawing.Point(69, 219)
+        Me.btnLogin.Location = New System.Drawing.Point(77, 217)
         Me.btnLogin.Name = "btnLogin"
         Me.btnLogin.Size = New System.Drawing.Size(111, 38)
         Me.btnLogin.TabIndex = 5
@@ -93,7 +93,7 @@ Partial Class Form1
         'btnCancel
         '
         Me.btnCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(186, 219)
+        Me.btnCancel.Location = New System.Drawing.Point(194, 217)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(111, 38)
         Me.btnCancel.TabIndex = 6
@@ -103,28 +103,29 @@ Partial Class Form1
         'btnRegister
         '
         Me.btnRegister.AutoSize = True
-        Me.btnRegister.Location = New System.Drawing.Point(160, 190)
+        Me.btnRegister.Location = New System.Drawing.Point(266, 183)
         Me.btnRegister.Name = "btnRegister"
-        Me.btnRegister.Size = New System.Drawing.Size(46, 13)
+        Me.btnRegister.Size = New System.Drawing.Size(80, 13)
         Me.btnRegister.TabIndex = 7
         Me.btnRegister.TabStop = True
-        Me.btnRegister.Text = "Register"
+        Me.btnRegister.Text = "Create account"
         '
         'chkShow
         '
         Me.chkShow.AutoSize = True
-        Me.chkShow.Location = New System.Drawing.Point(287, 135)
+        Me.chkShow.BackColor = System.Drawing.Color.White
+        Me.chkShow.Location = New System.Drawing.Point(287, 146)
         Me.chkShow.Name = "chkShow"
         Me.chkShow.Size = New System.Drawing.Size(53, 17)
         Me.chkShow.TabIndex = 8
         Me.chkShow.Text = "Show"
-        Me.chkShow.UseVisualStyleBackColor = True
+        Me.chkShow.UseVisualStyleBackColor = False
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.White
+        Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(374, 292)
         Me.ControlBox = False
         Me.Controls.Add(Me.chkShow)
@@ -138,7 +139,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Label1)
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Consolidated Form"
+        Me.Text = "Login Form"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
