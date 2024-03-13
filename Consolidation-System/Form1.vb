@@ -40,4 +40,11 @@ Public Class Form1
             Me.Close()
         End If
     End Sub
+    Private Sub chkShow_CheckedChanged(sender As Object, e As EventArgs) Handles chkShow.CheckedChanged
+        If chkShow.Checked = False Then
+            txtPassword.PasswordChar = "●"
+        Else
+            txtPassword.PasswordChar = ""
+        End If
+    End Sub
 End Class

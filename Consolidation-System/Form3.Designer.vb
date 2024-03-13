@@ -34,6 +34,7 @@ Partial Class Form3
         Me.btnRegister = New System.Windows.Forms.Button()
         Me.cmbPosition = New System.Windows.Forms.ComboBox()
         Me.btnCancel = New System.Windows.Forms.Button()
+        Me.chkShow = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'Label1
@@ -51,7 +52,7 @@ Partial Class Form3
         Me.txtFName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtFName.Location = New System.Drawing.Point(113, 20)
         Me.txtFName.Name = "txtFName"
-        Me.txtFName.Size = New System.Drawing.Size(129, 26)
+        Me.txtFName.Size = New System.Drawing.Size(212, 26)
         Me.txtFName.TabIndex = 1
         '
         'txtLName
@@ -59,7 +60,7 @@ Partial Class Form3
         Me.txtLName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLName.Location = New System.Drawing.Point(113, 52)
         Me.txtLName.Name = "txtLName"
-        Me.txtLName.Size = New System.Drawing.Size(129, 26)
+        Me.txtLName.Size = New System.Drawing.Size(212, 26)
         Me.txtLName.TabIndex = 3
         '
         'Label2
@@ -87,7 +88,7 @@ Partial Class Form3
         Me.txtUsername.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtUsername.Location = New System.Drawing.Point(113, 116)
         Me.txtUsername.Name = "txtUsername"
-        Me.txtUsername.Size = New System.Drawing.Size(129, 26)
+        Me.txtUsername.Size = New System.Drawing.Size(212, 26)
         Me.txtUsername.TabIndex = 7
         '
         'Label4
@@ -105,7 +106,8 @@ Partial Class Form3
         Me.txtPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPassword.Location = New System.Drawing.Point(113, 148)
         Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.Size = New System.Drawing.Size(129, 26)
+        Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
+        Me.txtPassword.Size = New System.Drawing.Size(212, 26)
         Me.txtPassword.TabIndex = 9
         '
         'Label5
@@ -121,7 +123,7 @@ Partial Class Form3
         'btnRegister
         '
         Me.btnRegister.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRegister.Location = New System.Drawing.Point(34, 198)
+        Me.btnRegister.Location = New System.Drawing.Point(68, 206)
         Me.btnRegister.Name = "btnRegister"
         Me.btnRegister.Size = New System.Drawing.Size(95, 30)
         Me.btnRegister.TabIndex = 10
@@ -135,25 +137,37 @@ Partial Class Form3
         Me.cmbPosition.Items.AddRange(New Object() {"IT Specialist", "Manager", "Accounting"})
         Me.cmbPosition.Location = New System.Drawing.Point(113, 84)
         Me.cmbPosition.Name = "cmbPosition"
-        Me.cmbPosition.Size = New System.Drawing.Size(129, 26)
+        Me.cmbPosition.Size = New System.Drawing.Size(212, 26)
         Me.cmbPosition.TabIndex = 11
         '
         'btnCancel
         '
         Me.btnCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(135, 198)
+        Me.btnCancel.Location = New System.Drawing.Point(169, 206)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(95, 30)
         Me.btnCancel.TabIndex = 12
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
+        'chkShow
+        '
+        Me.chkShow.AutoSize = True
+        Me.chkShow.BackColor = System.Drawing.Color.White
+        Me.chkShow.Location = New System.Drawing.Point(267, 154)
+        Me.chkShow.Name = "chkShow"
+        Me.chkShow.Size = New System.Drawing.Size(53, 17)
+        Me.chkShow.TabIndex = 13
+        Me.chkShow.Text = "Show"
+        Me.chkShow.UseVisualStyleBackColor = False
+        '
         'Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(266, 258)
+        Me.ClientSize = New System.Drawing.Size(342, 258)
         Me.ControlBox = False
+        Me.Controls.Add(Me.chkShow)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.cmbPosition)
         Me.Controls.Add(Me.btnRegister)
@@ -186,4 +200,5 @@ Partial Class Form3
     Friend WithEvents btnRegister As Button
     Friend WithEvents cmbPosition As ComboBox
     Friend WithEvents btnCancel As Button
+    Friend WithEvents chkShow As CheckBox
 End Class

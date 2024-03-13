@@ -27,15 +27,21 @@ Public Class Form2
         txtTotalOrders.Text = ""
         lblPercent.Text = ""
         lblConviFee.Text = ""
-        lblConviFee.Text = ""
         txtCFSUF.Text = ""
         lblTotalSales.Text = ""
         txtDCharges.Text = ""
         txtMerchants.Text = ""
     End Sub
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        dtDate.CustomFormat = "MM/dd/yyyy"
+        dtDate.CustomFormat = "yyyy-MM-dd"
         dtDate.Format = DateTimePickerFormat.Custom
+        '
+        DateTimePickerStartDate.CustomFormat = "yyyy-MM-dd"
+        DateTimePickerStartDate.Format = DateTimePickerFormat.Custom
+        '
+        DateTimePickerEndDate.CustomFormat = "yyyy-MM-dd"
+        DateTimePickerEndDate.Format = DateTimePickerFormat.Custom
+        '
         refreshData()
     End Sub
     Private Sub txtTotalOrders_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtTotalOrders.KeyPress
@@ -50,23 +56,27 @@ Public Class Form2
     End Sub
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         Try
-            con.Open()
-            Dim query As String = "INSERT INTO db (date, orderdetails, items, customername, destination, totalorders, percentage, convifee, cfsuf, totalsales, deliverycharges, merchants) VALUES (@val1, @val2, @val3, @val4, @val5, @val6, @val7, @val8, @val9, @val10, @val11, @val12)"
-            command = New NpgsqlCommand(query, con)
-            command.Parameters.AddWithValue("@val1", dtDate.Value.Date)
-            command.Parameters.AddWithValue("@val2", txtOrderDetails.Text)
-            command.Parameters.AddWithValue("@val3", txtItems.Text)
-            command.Parameters.AddWithValue("@val4", txtCustomerName.Text)
-            command.Parameters.AddWithValue("@val5", txtDestination.Text)
-            command.Parameters.AddWithValue("@val6", Val(txtTotalOrders.Text))
-            command.Parameters.AddWithValue("@val7", lblPercent.Text)
-            command.Parameters.AddWithValue("@val8", lblConviFee.Text)
-            command.Parameters.AddWithValue("@val9", txtCFSUF.Text)
-            command.Parameters.AddWithValue("@val10", lblTotalSales.Text)
-            command.Parameters.AddWithValue("@val11", txtDCharges.Text)
-            command.Parameters.AddWithValue("@val12", txtMerchants.Text)
-            command.ExecuteNonQuery()
-            MessageBox.Show("Adding data successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            If txtOrderDetails.Text = "" And txtItems.Text = "" And txtCustomerName.Text = "" And txtCustomerName.Text = "" And txtDestination.Text = "" And txtTotalOrders.Text = "" And lblPercent.Text = "" And lblConviFee.Text = "" And txtCFSUF.Text = "" And lblTotalSales.Text = "" And txtDCharges.Text = "" And txtMerchants.Text = "" Then
+                MessageBox.Show("Please fillup the fieild", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                con.Open()
+                Dim query As String = "INSERT INTO db (date, orderdetails, items, customername, destination, totalorders, percentage, convifee, cfsuf, totalsales, deliverycharges, merchants) VALUES (@val1, @val2, @val3, @val4, @val5, @val6, @val7, @val8, @val9, @val10, @val11, @val12)"
+                command = New NpgsqlCommand(query, con)
+                command.Parameters.AddWithValue("@val1", dtDate.Value.Date)
+                command.Parameters.AddWithValue("@val2", txtOrderDetails.Text)
+                command.Parameters.AddWithValue("@val3", txtItems.Text)
+                command.Parameters.AddWithValue("@val4", txtCustomerName.Text)
+                command.Parameters.AddWithValue("@val5", txtDestination.Text)
+                command.Parameters.AddWithValue("@val6", Val(txtTotalOrders.Text))
+                command.Parameters.AddWithValue("@val7", lblPercent.Text)
+                command.Parameters.AddWithValue("@val8", lblConviFee.Text)
+                command.Parameters.AddWithValue("@val9", txtCFSUF.Text)
+                command.Parameters.AddWithValue("@val10", lblTotalSales.Text)
+                command.Parameters.AddWithValue("@val11", txtDCharges.Text)
+                command.Parameters.AddWithValue("@val12", txtMerchants.Text)
+                command.ExecuteNonQuery()
+                MessageBox.Show("Adding data successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
@@ -180,15 +190,18 @@ Public Class Form2
             Form1.Show()
         End If
     End Sub
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub btnFilter_Click(sender As Object, e As EventArgs) Handles btnFilter.Click
+        Dim startDate As Date = DateTimePickerStartDate.Value.Date
+        Dim endDate As Date = DateTimePickerEndDate.Value.Date
         Try
-            Dim query As String = "SELECT * FROM db WHERE CAST(""date"" AS timestamp) BETWEEN @startDate AND @endDate ORDER BY ""date"" DESC"
-            Dim adapter As New NpgsqlDataAdapter(query, con)
-            adapter.SelectCommand.Parameters.AddWithValue("@startDate", DateTimePickerStartDate.Value.Date) ' Hindi na kailangan ang .Date
-            adapter.SelectCommand.Parameters.AddWithValue("@endDate", DateTimePickerEndDate.Value.Date) ' Hindi na kailangan ang .Date
-
-            Dim dbds As New DataSet()
-            adapter.Fill(dbds, "db")
+            dt.Clear()
+            con.Open()
+            Dim query As String = "SELECT * FROM db WHERE date BETWEEN @startDate AND @endDate ORDER BY id ASC"
+            adapter = New NpgsqlDataAdapter(query, con)
+            adapter.SelectCommand.Parameters.AddWithValue("@startDate", startDate)
+            adapter.SelectCommand.Parameters.AddWithValue("@endDate", endDate)
+            adapter.Fill(dt)
+            dgList.DataSource = dt
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally

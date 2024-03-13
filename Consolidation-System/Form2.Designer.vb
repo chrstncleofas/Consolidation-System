@@ -60,7 +60,7 @@ Partial Class Form2
         Me.LogoutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DateTimePickerStartDate = New System.Windows.Forms.DateTimePicker()
         Me.DateTimePickerEndDate = New System.Windows.Forms.DateTimePicker()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnFilter = New System.Windows.Forms.Button()
         CType(Me.dgList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -394,24 +394,24 @@ Partial Class Form2
         '
         Me.DateTimePickerStartDate.Location = New System.Drawing.Point(12, 226)
         Me.DateTimePickerStartDate.Name = "DateTimePickerStartDate"
-        Me.DateTimePickerStartDate.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePickerStartDate.Size = New System.Drawing.Size(136, 20)
         Me.DateTimePickerStartDate.TabIndex = 73
         '
         'DateTimePickerEndDate
         '
         Me.DateTimePickerEndDate.Location = New System.Drawing.Point(12, 252)
         Me.DateTimePickerEndDate.Name = "DateTimePickerEndDate"
-        Me.DateTimePickerEndDate.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePickerEndDate.Size = New System.Drawing.Size(136, 20)
         Me.DateTimePickerEndDate.TabIndex = 74
         '
-        'Button1
+        'btnFilter
         '
-        Me.Button1.Location = New System.Drawing.Point(228, 237)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 75
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnFilter.Location = New System.Drawing.Point(154, 237)
+        Me.btnFilter.Name = "btnFilter"
+        Me.btnFilter.Size = New System.Drawing.Size(75, 23)
+        Me.btnFilter.TabIndex = 75
+        Me.btnFilter.Text = "Filter"
+        Me.btnFilter.UseVisualStyleBackColor = True
         '
         'Form2
         '
@@ -419,7 +419,7 @@ Partial Class Form2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(913, 500)
         Me.ControlBox = False
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnFilter)
         Me.Controls.Add(Me.DateTimePickerEndDate)
         Me.Controls.Add(Me.DateTimePickerStartDate)
         Me.Controls.Add(Me.btnPrint)
@@ -506,5 +506,5 @@ Partial Class Form2
     Friend WithEvents LogoutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DateTimePickerStartDate As DateTimePicker
     Friend WithEvents DateTimePickerEndDate As DateTimePicker
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnFilter As Button
 End Class
