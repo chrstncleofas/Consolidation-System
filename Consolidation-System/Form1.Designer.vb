@@ -37,7 +37,7 @@ Partial Class Form1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(92, 18)
+        Me.Label1.Location = New System.Drawing.Point(93, 18)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(210, 50)
         Me.Label1.TabIndex = 0
@@ -83,7 +83,7 @@ Partial Class Form1
         'btnLogin
         '
         Me.btnLogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLogin.Location = New System.Drawing.Point(77, 217)
+        Me.btnLogin.Location = New System.Drawing.Point(76, 217)
         Me.btnLogin.Name = "btnLogin"
         Me.btnLogin.Size = New System.Drawing.Size(111, 38)
         Me.btnLogin.TabIndex = 5
@@ -93,7 +93,7 @@ Partial Class Form1
         'btnCancel
         '
         Me.btnCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(194, 217)
+        Me.btnCancel.Location = New System.Drawing.Point(193, 217)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(111, 38)
         Me.btnCancel.TabIndex = 6
